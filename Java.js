@@ -5,7 +5,7 @@ const selectMae = document.getElementById("mae");
 
 const API_URL = "http://127.0.0.1:5000/passarinhos";
 
-// Função para buscar dados da API e renderizar na tela
+
 async function carregar() {
     try {
         const res = await fetch(API_URL);
@@ -13,11 +13,11 @@ async function carregar() {
 
         lista.innerHTML = "";
         
-        // Limpa as opções anteriores deixando apenas o padrão
+      
         selectPai.innerHTML = '<option value="">Nenhum (Pai Desconhecido)</option>';
         selectMae.innerHTML = '<option value="">Nenhum (Mãe Desconhecida)</option>';
 
-        // 1º Passo: Preencher as caixas de seleção de Pai e Mãe
+       
         data.forEach(p => {
             const option = document.createElement("option");
             option.value = p.anilha;
@@ -30,11 +30,11 @@ async function carregar() {
             }
         });
 
-        // 2º Passo: Montar a listagem na tela com a linhagem dos pais
+        
         data.forEach(p => {
             const li = document.createElement("li");
             
-            // Procura o nome do pai e da mãe na lista de dados usando a anilha
+     
             const dadosPai = data.find(passaro => passaro.anilha === p.pai);
             const dadosMae = data.find(passaro => passaro.anilha === p.mae);
 
@@ -57,7 +57,7 @@ async function carregar() {
     }
 }
 
-// Evento do formulário (POST)
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -91,5 +91,4 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-// Inicializa o sistema ao carregar a página
 carregar();
